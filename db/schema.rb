@@ -10,10 +10,46 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_24_033519) do
+ActiveRecord::Schema.define(version: 2018_08_26_170846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "customers", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "priorities", force: :cascade do |t|
+    t.string "name"
+    t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string "name"
+    t.integer "level"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string "description"
+    t.bigint "customer_id"
+    t.bigint "admin_id"
+    t.bigint "user_id"
+    t.bigint "priority_id"
+    t.bigint "status_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_tickets_on_admin_id"
+    t.index ["customer_id"], name: "index_tickets_on_customer_id"
+    t.index ["priority_id"], name: "index_tickets_on_priority_id"
+    t.index ["status_id"], name: "index_tickets_on_status_id"
+    t.index ["user_id"], name: "index_tickets_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name", default: "", null: false
@@ -28,4 +64,7 @@ ActiveRecord::Schema.define(version: 2018_08_24_033519) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "tickets", "customers"
+  add_foreign_key "tickets", "priorities"
+  add_foreign_key "tickets", "statuses"
 end
