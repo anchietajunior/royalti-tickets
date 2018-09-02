@@ -2,7 +2,7 @@
 
 <h1>Tickets</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Description</th>
@@ -20,8 +20,8 @@
       <tr>
         <td><%= ticket.description %></td>
         <td><%= ticket.customer %></td>
-        <td><%= ticket.created_by %></td>
-        <td><%= ticket.user %></td>
+        <td><%= ticket.admin.name %></td>
+        <td><%= ticket.user.name %></td>
         <td><%= ticket.priority %></td>
         <td><%= ticket.status %></td>
         <td><%= link_to 'Show', ticket %></td>
