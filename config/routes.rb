@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :comments
   get '/dashboard', to: 'dashboard#home'
   root 'dashboard#home'
   resources :tickets
