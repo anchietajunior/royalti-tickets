@@ -4,6 +4,10 @@ class DashboardFacade
   end
 
   def opened_tickets
-    Ticket.all
+    Ticket.all_opened
+  end
+
+  def clients_number
+  	Customer.all.count
   end
 end

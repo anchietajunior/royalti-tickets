@@ -19,13 +19,15 @@ gem 'faker'
 gem 'jquery-rails'
 gem 'bootstrap_sb_admin_base_v2'
 
+gem 'slim'
+
 group :development, :test do
   gem 'rspec-rails', '3.8'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '~> 3.8'
 end
 
 group :development do

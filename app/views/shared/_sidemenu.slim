@@ -1,0 +1,29 @@
+.navbar-default.sidebar role="navigation" 
+  .sidebar-nav.navbar-collapse
+    ul#side-menu.nav
+      li
+        = link_to '/dashboard' do
+          i.fa.fa-files-o.fa-fw
+          | Dashboard
+          span.fa.arrow      
+      li
+        = link_to tickets_path do
+          i.fa.fa-files-o.fa-fw
+          | Chamados
+          span.fa.arrow
+      li
+        = link_to customers_path do
+          i.fa.fa-files-o.fa-fw
+          | Clientes
+          span.fa.arrow
+      li
+        = link_to statuses_path do
+          i.fa.fa-files-o.fa-fw
+          | Status
+          span.fa.arrow
+      li
+        = link_to priorities_path do
+          i.fa.fa-files-o.fa-fw
+          | Prioridades
+          span.fa.arrow
+  /! /.sidebar-collapse
