@@ -1,0 +1,17 @@
+= form_with(model: priority, local: true) do |form|
+  - if priority.errors.any?
+    #error_explanation
+      h2
+        = pluralize(priority.errors.count, "error")
+        | prohibited this priority from being saved:
+      ul
+        - priority.errors.full_messages.each do |message|
+          li= message
+  .form-group
+    = form.label :name
+    = form.text_field :name, class: "form-control"
+  .form-group
+    = form.label :level
+    = form.number_field :level, class: "form-control"
+  .form-group
+    = form.submit class: "btn btn-primary"

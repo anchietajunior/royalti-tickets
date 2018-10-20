@@ -6,6 +6,6 @@ class Ticket < ApplicationRecord
   belongs_to :status, optional: true
 
   #Scopes
-  scope :all_opened, -> { includes(:status).where('statuses.level = ?', 0).references(:status) }
-  scope :high_priority, -> { includes(:priority).where('priorities.level = ?', 0).references(:priority) }
+  scope :all_opened, -> { includes(:status).includes(:priority).where('statuses.level = ?', 0).references(:status).merge(Priority.order(level: :asc)) }
+  scope :opened_high_priority, -> { includes(:status).includes(:priority).where('statuses.level = ?', 0).references(:status).where('priorities.level = ?', 5).references(:priority) }
 end

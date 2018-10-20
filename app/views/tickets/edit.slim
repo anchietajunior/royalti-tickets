@@ -1,0 +1,15 @@
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Editar chamado
+  .row
+    .col-lg-12
+      p#notice
+        = notice
+
+      div class="panel panel-default"
+        .panel-body
+		      = render 'form', ticket: @ticket
+        .panel-footer
+          = link_to 'Exibir chamado', @ticket, class: "btn btn-default"
+          = link_to 'Voltar', tickets_path, class: "btn btn-default"

@@ -10,61 +10,42 @@
         .panel-heading
           .row
             .col-xs-3
-              i.fa.fa-comments.fa-5x
+              i.fa.fa-comments-o.fa-5x
             .col-xs-9.text-right
               .huge #{@dashboard_facade.clients_number}
               div Clientes
-        a href="#" 
-          .panel-footer
-            span.pull-left View Details
-            span.pull-right
-              i.fa.fa-arrow-circle-right
             .clearfix
     .col-lg-3.col-md-6
       .panel.panel-green
         .panel-heading
           .row
             .col-xs-3
-              i.fa.fa-tasks.fa-5x
+              i.fa.fa-comments-o.fa-5x
             .col-xs-9.text-right
               .huge 12
               div New Tasks!
-        a href="#" 
-          .panel-footer
-            span.pull-left View Details
-            span.pull-right
-              i.fa.fa-arrow-circle-right
             .clearfix
     .col-lg-3.col-md-6
       .panel.panel-yellow
         .panel-heading
           .row
             .col-xs-3
-              i.fa.fa-shopping-cart.fa-5x
+              i.fa.fa-comments-o.fa-5x
             .col-xs-9.text-right
               .huge 124
               div New Orders!
-        a href="#" 
-          .panel-footer
-            span.pull-left View Details
-            span.pull-right
-              i.fa.fa-arrow-circle-right
             .clearfix
-    .col-lg-3.col-md-6
-      .panel.panel-red
-        .panel-heading
-          .row
-            .col-xs-3
-              i.fa.fa-support.fa-5x
-            .col-xs-9.text-right
-              .huge 13
-              div Support Tickets!
-        a href="#" 
-          .panel-footer
-            span.pull-left View Details
-            span.pull-right
-              i.fa.fa-arrow-circle-right
-            .clearfix
+    - if @dashboard_facade.high_priority_tickets_count
+      .col-lg-3.col-md-6
+        .panel.panel-red
+          .panel-heading
+            .row
+              .col-xs-3
+                i.fa.fa-comments-o.fa-5x
+              .col-xs-9.text-right
+                .huge #{@dashboard_facade.high_priority_tickets_count}
+                div Chamados imediatos
+              .clearfix
   /! /.row
   .row
     /! /.col-lg-8
@@ -73,18 +54,21 @@
         div class="panel-heading"
           i class="fa fa-clock-o fa-fw"
           | Chamados abertos
-        table class="table table-striped"
-          thead
-            tr
-              th Cliente
-              th Prioridade
-              th Responsável
-              th Criado a
-          tbody
-            - @dashboard_facade.opened_tickets.each do |ticket|
-              tr
-                td= ticket.customer.name
-                td= ticket.priority.name
-                td= ticket.user.name
-                td= time_ago_in_words(ticket.created_at)
-        br/
+        div class="panel-body"
+          .table-responsive
+            table class="table table-striped table-bordered"
+              thead
+                tr
+                  th Cliente
+                  th Prioridade
+                  th Responsável
+                  th Criado a
+              tbody
+                - @dashboard_facade.opened_tickets.each do |ticket|
+                  tr
+                    td= ticket.customer.name
+                    td= ticket.priority.name
+                    td= ticket.user.name
+                    td= time_ago_in_words(ticket.created_at)
+          br/
+        div class="panel-body"

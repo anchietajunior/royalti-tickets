@@ -2,27 +2,25 @@
   .row
     .col-lg-12
       h1.page-header Chamados
+  = render 'tickets/components/filters'
   .row
     .col-lg-12
       p#notice
         = notice
 
       div class="panel panel-default"
-        div class="panel-heading"
-          i class="fa fa-clock-o fa-fw"
-          | Chamados abertos
-        table class="table table-striped"
+        table class="table table-striped table-bordered"
           thead
             tr
-              th Description
-              th Customer
-              th Created by
-              th User
-              th Priority
+              th Descrição
+              th Cliente
+              th Criado por
+              th Responsável
+              th Prioridade
               th Status
-              th colspan="3" 
+              th Ações
           tbody
-            - @tickets.each do |ticket|
+            - @tickets_facade.tickets.each do |ticket|
               tr
                 td= ticket.description
                 td= ticket.customer.name
@@ -30,8 +28,13 @@
                 td= ticket.user.name
                 td= ticket.priority.name
                 td= ticket.status.name
-                td= link_to 'Show', ticket
-                td= link_to 'Edit', edit_ticket_path(ticket)
-                td= link_to 'Destroy', ticket, method: :delete, data: {confirm: 'Are you sure?'}
+                td
+                  = link_to ticket, class: "btn btn-default" do
+                    i class="fa fa-folder-open-o"
+                  = link_to edit_ticket_path(ticket), class: "btn btn-default" do
+                    i class="fa fa-pencil"
+                  = link_to ticket, method: :delete, class: "btn btn-default", data: {confirm: 'Are you sure?'} do
+                    i class="fa fa-remove"
         br/
-      = link_to 'Novo chamado', new_ticket_path, class: "btn btn-primary"
+      div class="panel-footer"
+        = link_to 'Novo chamado', new_ticket_path, class: "btn btn-primary"

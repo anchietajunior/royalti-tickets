@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets_facade = TicketsFacade.new(params)
   end
 
   # GET /tickets/1
@@ -25,6 +25,9 @@ class TicketsController < ApplicationController
   # POST /tickets.json
   def create
     @ticket = Ticket.new(ticket_params)
+
+    @ticket.admin = current_user
+    @ticket.status = Status.find_by(level: 0)
 
     respond_to do |format|
       if @ticket.save

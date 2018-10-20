@@ -1,0 +1,38 @@
+.row
+  .col-lg-2
+    .dropdown
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+        | Filtar por cliente 
+        span.caret
+      ul.dropdown-menu
+        - @tickets_facade.all_customers.each do |customer|
+          li
+            = link_to customer.name, customer_tickets_path(customer.id)
+  .col-lg-2
+    .dropdown
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+        | Filtar por status 
+        span.caret
+      ul.dropdown-menu
+        - @tickets_facade.all_status.each do |status|
+          li
+            = link_to status.name, status_tickets_path(status.id)
+  .col-lg-2
+    .dropdown
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+        | Filtar por prioridade 
+        span.caret
+      ul.dropdown-menu
+        - @tickets_facade.all_priorities.each do |priority|
+          li
+            = link_to priority.name, priority_tickets_path(priority.id)
+
+  .col-lg-2
+    .dropdown
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+        | Filtar por Analista 
+        span.caret
+      ul.dropdown-menu
+        - @tickets_facade.all_users.each do |user|
+          li
+            = link_to user.name, user_tickets_path(user.id)

@@ -1,0 +1,31 @@
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Chamado de #{@ticket.customer.name}
+  .row
+    .col-lg-12
+      p#notice
+        = notice
+
+      div class="panel panel-default"
+        .panel-body
+          p
+            strong Descrição: 
+            = @ticket.description
+          p
+            strong Analista responsável:
+            = @ticket.user.name
+          p
+            strong Prioridade:
+            = @ticket.priority.name
+          p
+            strong Status:
+            = @ticket.status.name
+          p
+            strong Criado por:
+            = @ticket.admin.name
+          p
+            strong Criado em:
+            = time_ago_in_words(@ticket.created_at)
+          = link_to 'Editar', edit_ticket_path(@ticket), class: "btn btn-default"
+          = link_to 'Exibir todos os chamados', tickets_path, class: "btn btn-default"

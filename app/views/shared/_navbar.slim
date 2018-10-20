@@ -1,6 +1,6 @@
-nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0") 
+nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bottom: 0")
   .navbar-header
-    button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button" 
+    button.navbar-toggle data-target=".navbar-collapse" data-toggle="collapse" type="button"
       span.sr-only Toggle navigation
       span.icon-bar
       span.icon-bar
@@ -8,14 +8,15 @@ nav.navbar.navbar-default.navbar-static-top role="navigation" style=("margin-bot
     a.navbar-brand href="index.html"  RoyalTI
   ul.nav.navbar-top-links.navbar-right
     li.dropdown
-      a.dropdown-toggle data-toggle="dropdown" href="#" 
+      a.dropdown-toggle data-toggle="dropdown" href="#"
         i.fa.fa-user.fa-fw
         i.fa.fa-caret-down
       ul.dropdown-menu.dropdown-user
-        li
-          a href="#" 
-            i.fa.fa-user.fa-fw
-            | #{current_user.name}
+        - if user_signed_in?
+          li
+            a href="#"
+              i.fa.fa-user.fa-fw
+              | #{current_user.name}
         li.divider
         - if user_signed_in?
           li
