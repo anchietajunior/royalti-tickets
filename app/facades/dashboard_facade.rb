@@ -1,10 +1,14 @@
 class DashboardFacade
-  def initialize(user)
+  
+  PER_PAGE = 20
+  
+  def initialize(params, user)
+    @params = params
     @user = user
   end
 
   def opened_tickets
-    Ticket.all_opened
+    Ticket.all_opened.page(@params[:page]).per(PER_PAGE)
   end
 
   def clients_number

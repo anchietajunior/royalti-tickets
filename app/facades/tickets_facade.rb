@@ -1,4 +1,7 @@
 class TicketsFacade
+
+  PER_PAGE = 20
+
   def initialize(params)
     @params = params
   end
@@ -36,22 +39,22 @@ class TicketsFacade
   private
 
   def all_tickets
-    Ticket.includes(:status).includes(:customer).includes(:priority).includes(:user).all.order('created_at')
+    Ticket.includes(:status).includes(:customer).includes(:priority).includes(:user).all.order('created_at').page(@params[:page]).per(PER_PAGE)
   end
 
   def tickets_by_customer
-    Customer.find(@params[:customer_id]).tickets.includes(:customer).includes(:priority).includes(:user).order('created_at')
+    Customer.find(@params[:customer_id]).tickets.includes(:customer).includes(:priority).includes(:user).order('created_at').page(@params[:page]).per(PER_PAGE)
   end
 
   def tickets_by_status
-    Status.find(@params[:status_id]).tickets.includes(:customer).includes(:priority).includes(:user).order('created_at')
+    Status.find(@params[:status_id]).tickets.includes(:customer).includes(:priority).includes(:user).order('created_at').page(@params[:page]).per(PER_PAGE)
   end
 
   def tickets_by_priority
-    Priority.find(@params[:priority_id]).tickets.includes(:customer).includes(:priority).includes(:user).order('created_at')
+    Priority.find(@params[:priority_id]).tickets.includes(:customer).includes(:priority).includes(:user).order('created_at').page(@params[:page]).per(PER_PAGE)
   end
 
   def tickets_by_user
-    User.find(@params[:user_id]).owned_tickets.includes(:customer).includes(:priority).includes(:user).order('created_at')
+    User.find(@params[:user_id]).owned_tickets.includes(:customer).includes(:priority).includes(:user).order('created_at').page(@params[:page]).per(PER_PAGE)
   end
 end

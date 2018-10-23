@@ -1,7 +1,7 @@
 .row
   .col-lg-2
     .dropdown
-      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button" style="width: 100%"
         | Filtar por cliente 
         span.caret
       ul.dropdown-menu
@@ -10,7 +10,7 @@
             = link_to customer.name, customer_tickets_path(customer.id)
   .col-lg-2
     .dropdown
-      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button" style="width: 100%"
         | Filtar por status 
         span.caret
       ul.dropdown-menu
@@ -19,7 +19,7 @@
             = link_to status.name, status_tickets_path(status.id)
   .col-lg-2
     .dropdown
-      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"  style="width: 100%"
         | Filtar por prioridade 
         span.caret
       ul.dropdown-menu
@@ -29,7 +29,7 @@
 
   .col-lg-2
     .dropdown
-      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"
+      button.btn.btn-default.dropdown-toggle data-toggle="dropdown" type="button"  style="width: 100%"
         | Filtar por Analista 
         span.caret
       ul.dropdown-menu

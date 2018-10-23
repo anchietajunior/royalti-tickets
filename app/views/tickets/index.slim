@@ -28,7 +28,7 @@
                 td= ticket.user.name
                 td= ticket.priority.name
                 td= ticket.status.name
-                td
+                td style="min-width: 140px"
                   = link_to ticket, class: "btn btn-default" do
                     i class="fa fa-folder-open-o"
                   = link_to edit_ticket_path(ticket), class: "btn btn-default" do
@@ -37,4 +37,5 @@
                     i class="fa fa-remove"
         br/
       div class="panel-footer"
+        = paginate @tickets_facade.tickets
         = link_to 'Novo chamado', new_ticket_path, class: "btn btn-primary"

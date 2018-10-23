@@ -72,3 +72,4 @@
                     td= time_ago_in_words(ticket.created_at)
           br/
         div class="panel-body"
+          = paginate @dashboard_facade.opened_tickets

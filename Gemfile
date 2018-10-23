@@ -20,6 +20,7 @@ gem 'jquery-rails'
 gem 'bootstrap_sb_admin_base_v2'
 
 gem 'slim'
+gem 'kaminari'
 
 group :development, :test do
   gem 'rspec-rails', '3.8'
