@@ -29,13 +29,13 @@ Priority.create!(name: "Executar as demais", level: 0)
   Customer.create!(name: Faker::Company.name)
 end
 
-1000.times do
-  Ticket.create!(
-    description: Faker::Lorem.sentence,
-    customer: Customer.all.sample,
-    admin_id: admin.id,
-    user_id: User.all.sample.id,
-    status: Status.all.sample,
-    priority: Priority.all.sample
-  )
-end
+# 1000.times do
+#   Ticket.create!(
+#     description: Faker::Lorem.sentence,
+#     customer: Customer.all.sample,
+#     admin_id: admin.id,
+#     user_id: User.all.sample.id,
+#     status: Status.all.sample,
+#     priority: Priority.all.sample
+#   )
+# end
