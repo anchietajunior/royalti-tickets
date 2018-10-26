@@ -1,0 +1,21 @@
+= form_for(@user, url: create_analist_path) do |form|
+  - if user.errors.any?
+    #error_explanation
+      h2
+        = pluralize(user.errors.count, "error")
+        | prohibited this priority from being saved:
+      ul
+        - user.errors.full_messages.each do |message|
+          li= message
+  .form-group
+    label Nome
+    = form.text_field :name, class: "form-control"
+  .form-group
+    label E-mail
+    = form.email_field :email, class: "form-control"
+  .form-group
+    label Senha
+    = form.password_field :password, class: "form-control"
+  .form-group
+    = form.submit "Salvar usuário", class: "btn btn-primary"
+

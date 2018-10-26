@@ -1,12 +1,12 @@
 #page-wrapper
   .row
     .col-lg-12
-      = link_to 'Novo status', new_status_path, class: "btn btn-primary pull-right with-margin-top"
+      = link_to 'Novo usuário', new_analist_path, class: "btn btn-primary pull-right with-margin-top"
       h1.page-header Usuários
   .row
     .col-lg-12
       p#notice
-        = notice
+        = render 'shared/messages'
 
       div class="panel panel-default"
       	.table-responsive
@@ -17,12 +17,12 @@
 	              th E-mail
 	              th Ações
 	          tbody
-	            - @users.each do |user|
+	            - @users.each do |analist|
 	              tr
-	                td= user.name
-	                td= user.email
+	                td= analist.name
+	                td= analist.email
 	                td style="min-width: 140px"
-	                  = link_to user, class: "btn btn-default" do
+	                  = link_to analist_path(analist.id), class: "btn btn-default" do
 	                    i class="fa fa-folder-open-o"
 	                /   = link_to edit_status_path(status), class: "btn btn-default" do
 	                /     i class="fa fa-pencil"

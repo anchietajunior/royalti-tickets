@@ -31,11 +31,9 @@ class TicketsController < ApplicationController
 
     respond_to do |format|
       if @ticket.save
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully created.' }
-        format.json { render :show, status: :created, location: @ticket }
+        format.html { redirect_to @ticket, notice: 'Ticket criado.' }
       else
         format.html { render :new }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,13 +41,14 @@ class TicketsController < ApplicationController
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
+    if params[:ticket][:solution].present?
+      @ticket.status = Status.find_by(level: 0)
+    end
     respond_to do |format|
       if @ticket.update(ticket_params)
-        format.html { redirect_to @ticket, notice: 'Ticket was successfully updated.' }
-        format.json { render :show, status: :ok, location: @ticket }
+        format.html { redirect_to @ticket, notice: 'Chamado atualizado.', turbolinks: false }
       else
         format.html { render :edit }
-        format.json { render json: @ticket.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -72,6 +71,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:description, :customer_id, :created_by_id, :user_id, :priority_id, :status_id)
+      params.require(:ticket).permit(:description, :customer_id, :created_by_id, :user_id, :priority_id, :status_id, :solution)
     end
 end

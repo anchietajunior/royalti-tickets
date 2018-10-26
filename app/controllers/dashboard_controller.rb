@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
-  def home
+  def index
     @dashboard_facade = DashboardFacade.new(params, current_user)
   end
 end

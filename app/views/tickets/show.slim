@@ -4,8 +4,7 @@
       h1.page-header Chamado de #{@ticket.customer.name}
   .row
     .col-lg-12
-      p#notice
-        = notice
+      = render 'shared/messages'
 
       div class="panel panel-default"
         .panel-body
@@ -36,6 +35,12 @@
             = time_ago_in_words(@ticket.created_at)
           = link_to 'Editar', edit_ticket_path(@ticket), class: "btn btn-default"
           = link_to 'Exibir todos os chamados', tickets_path, class: "btn btn-default"
+      - unless @ticket.closed?
+        div class="panel panel-default"
+          div class="panel-heading"
+            i class="fa fa-folder fa-fw"
+            |  Fechar chamado
+          = render 'tickets/components/close_ticket_form', ticket: @ticket
 
       div class="panel panel-default"
         div class="panel-heading"

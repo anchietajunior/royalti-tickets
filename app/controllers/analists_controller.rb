@@ -1,6 +1,5 @@
-class UsersController < ApplicationController
-	before_action :set_user, only: [:show, :edit, :update, :destroy]
-
+class AnalistsController < ApplicationController
+  include Devise::Controllers::Rememberable
   # GET /users
   # GET /users.json
   def index
@@ -10,7 +9,7 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-  	@show_user_facade = ShowUserFacade.new(current_user)
+    @analist_facade = AnalistFacade.new(params)
   end
 
   # GET /users/new
@@ -20,20 +19,20 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:analist_id])
   end
 
   # POST /users
   # POST /users.json
   def create
-    @user = user.new(user_params)
+    @user = User.new(user_params)
+    @user.password_confirmation = @user.password
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'user was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
+        format.html { redirect_to analist_path(@user), notice: 'Usuário criado.' }
       else
         format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -41,13 +40,20 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
+    @user = User.find_by(email: params[:user][:email])
+    old_password = @user.password
+    if params[:user][:password].present?
+      @user.password_confirmation = params[:user][:password]
+    end
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'user was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+        if @user.password != old_password
+          sign_in(@user)
+          remember_me(@user)
+        end
+        format.html { redirect_to analist_path(@user), notice: 'Usuário atualizado.' }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -63,13 +69,8 @@ class UsersController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email, :password)
+      params.require(:user).permit(:id, :name, :email, :password)
     end
 end

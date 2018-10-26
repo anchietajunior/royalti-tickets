@@ -5,6 +5,7 @@
         .panel-heading
           h3.panel-title Log in
         .panel-body
+          = render 'shared/messages'
           = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
             fieldset
               .form-group
