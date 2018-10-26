@@ -1,0 +1,9 @@
+.panel-body
+  = form_tag(comments_path, id: "commentForm", remote: true) do
+    = hidden_field_tag :ticket_id, @ticket.id
+    = hidden_field_tag :authenticity_token, form_authenticity_token
+    .form-group
+      = text_field_tag :text, nil, {class: "form-control", id: "commentText"}
+      span style="display: none; color: red; padding: 10px;" id="spanErrorMessage"
+    .form-group
+      = submit_tag "Enviar", class: "btn btn-default", id: "submitButton"

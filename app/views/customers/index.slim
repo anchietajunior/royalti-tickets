@@ -1,6 +1,7 @@
 #page-wrapper
   .row
     .col-lg-12
+      = link_to 'Novo Cliente', new_customer_path, class: "btn btn-primary pull-right with-margin-top"
       h1.page-header Clientes
   .row
     .col-lg-12
@@ -12,13 +13,16 @@
           thead
             tr
               th Nome
-              th colspan="3" 
+              th Ações
           tbody
             - @customers.each do |customer|
               tr
                 td= customer.name
-                td= link_to 'Show', customer
-                td= link_to 'Edit', edit_customer_path(customer)
-                td= link_to 'Destroy', customer, method: :delete, data: {confirm: 'Are you sure?'}
+                td style="min-width: 140px"
+                  = link_to customer, class: "btn btn-default" do
+                    i class="fa fa-folder-open-o"
+                  = link_to edit_customer_path(customer), class: "btn btn-default" do
+                    i class="fa fa-pencil"
+                  = link_to customer, method: :delete, class: "btn btn-default", data: {confirm: 'Are you sure?'} do
+                    i class="fa fa-remove"
         br/
-        = link_to 'Novo Cliente', new_customer_path, class: "btn btn-primary"

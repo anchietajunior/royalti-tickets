@@ -1,0 +1,16 @@
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Cliente
+  .row
+    .col-lg-12
+      p#notice
+        = notice
+
+      div class="panel panel-default"
+        .panel-body
+          p
+            strong Nome:
+            |  #{@customer.name}
+          = link_to 'Editar', edit_customer_path(@customer), class: "btn btn-default" 
+          = link_to 'Voltar', customers_path, class: "btn btn-default"

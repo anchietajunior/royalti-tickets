@@ -1,0 +1,7 @@
+.panel-body
+  ul class="list-group" id="commentsList"
+    - @ticket.comments.reverse_each do |comment|
+      li class="list-group-item"
+        strong #{comment.text}
+        br
+        | #{comment.user.name} - #{time_ago_in_words(comment.created_at)}

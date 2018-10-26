@@ -1,0 +1,17 @@
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Status - #{@status.name}
+  .row
+    .col-lg-12
+      p#notice
+        = notice
+
+      div class="panel panel-default"
+        .panel-body
+          p
+            strong Nível: 
+            = @status.level
+
+          = link_to 'Editar', edit_status_path(@status), class: "btn btn-default"
+          = link_to 'Exibir todos os status', statuses_path, class: "btn btn-default"

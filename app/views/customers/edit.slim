@@ -1,0 +1,13 @@
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Editar cliente
+  .row
+    .col-lg-12
+      p#notice
+        = notice
+
+      div class="panel panel-default"
+        .panel-body
+		      = render 'form', customer: @customer
+					= link_to 'Exibir todos as prioridades', customers_path
