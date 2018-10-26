@@ -11,25 +11,25 @@ admin = User.create!(name: "Natan Miguel", email: "natan@royalti.com.br", passwo
 User.create!(name: "Marcus Aurélio", email: "marcos@royalti.com.br", password: "12345678")
 User.create!(name: "Anchieta Júnior", email: "santosjr87@gmail.com", password: "88533146Jr")
 
-Status.create!(name: "Aberta", level: 0)
-Status.create!(name: "Em execução", level: 1)
-Status.create!(name: "Pausada", level: 2)
+Status.create!(name: "Aberta", level: 6)
+Status.create!(name: "Em execução", level: 5)
+Status.create!(name: "Pausada", level: 4)
 Status.create!(name: "Pausada esperando cliente", level: 3)
-Status.create!(name: "Pausada esperando fornecedor", level: 4)
-Status.create!(name: "Agendada", level: 5)
-Status.create!(name: "Finalizada", level: 6)
+Status.create!(name: "Pausada esperando fornecedor", level: 2)
+Status.create!(name: "Agendada", level: 1)
+Status.create!(name: "Finalizada", level: 0)
 
-Priority.create!(name: "Imediato", level: 0)
-Priority.create!(name: "Alta", level: 1)
+Priority.create!(name: "Imediato", level: 4)
+Priority.create!(name: "Alta", level: 3)
 Priority.create!(name: "Média", level: 2)
-Priority.create!(name: "Baixa", level: 3)
-Priority.create!(name: "Executar as demais", level: 4)
+Priority.create!(name: "Baixa", level: 1)
+Priority.create!(name: "Executar as demais", level: 0)
 
 10.times do |customer|
   Customer.create!(name: Faker::Company.name)
 end
 
-10.times do
+1000.times do
   Ticket.create!(
     description: Faker::Lorem.sentence,
     customer: Customer.all.sample,

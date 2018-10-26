@@ -15,3 +15,35 @@
  *= require font-awesome
  *= require bootstrap_sb_admin_base_v2
  */
+
+
+.btn:visited {
+   color:#333 !important;
+}
+
+.btn.btn-primary:visited {
+   color:#FFF !important;
+}
+
+/* .navbar-default {
+  background-color: #000;
+}
+
+.navbar-default .sidebar {
+  background-color: #000;
+} */
+
+.with-margin-top {
+	margin-top: 40px;
+}
+
+.custom-font-strong {
+	font-size: 2em;
+	font-weight: bold;
+	color: black;
+}
+
+#side-menu.nav li a {
+	font-size: 1em;
+	font-weight: bold;
+}

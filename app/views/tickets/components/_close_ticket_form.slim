@@ -1,0 +1,16 @@
+.panel-body
+  = form_with(model: ticket, local: true) do |form|
+    - if ticket.errors.any?
+      #error_explanation
+        h2
+          = pluralize(ticket.errors.count, "error")
+          | não permitiram esse chamado ser salvo:
+        ul
+          - ticket.errors.full_messages.each do |message|
+            li= message
+    .form-group
+      label Solução (Opcional)
+      = form.text_field :solution, class: "form-control"
+    .form-group
+      = form.submit "Fechar Chamado", class: "btn btn-primary"
+

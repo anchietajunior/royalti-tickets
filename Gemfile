@@ -13,11 +13,14 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
-gem 'devise'
+gem 'devise', '~> 4.5'
 gem 'pundit'
 gem 'faker'
 gem 'jquery-rails'
 gem 'bootstrap_sb_admin_base_v2'
+
+gem 'slim'
+gem 'kaminari'
 
 group :development, :test do
   gem 'rspec-rails', '3.8'
@@ -25,7 +28,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'capybara', '~> 3.8'
 end
 
 group :development do

@@ -1,0 +1,20 @@
+<% if @comment.errors.any? %>
+  console.log('Erro: <%=@comment.errors.first.message %>');
+<% else %>
+  console.log('Comentário criado: <%= @comment %>');
+//SET ELEMENTS
+var commentsList = document.getElementById('commentsList');
+var item = document.createElement('li');
+var itemText = document.createElement('strong');
+var space = document.createElement('br');
+
+var commentInfo = "<%= @comment.user.name %> <%= time_ago_in_words(@comment.created_at) %>";
+itemText.innerHTML = "<%= @comment.text %>";
+item.append(itemText);
+item.append(space);
+item.append(commentInfo);
+item.classList.add('list-group-item');
+commentsList.prepend(item);
+
+document.getElementById('commentText').value = "";
+<% end %>

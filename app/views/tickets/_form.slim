@@ -1,0 +1,23 @@
+= form_with(model: ticket, local: true) do |form|
+  - if ticket.errors.any?
+    #error_explanation
+      h2
+        = pluralize(ticket.errors.count, "error")
+        | não permitiram esse chamado ser salvo:
+      ul
+        - ticket.errors.full_messages.each do |message|
+          li= message
+  .form-group
+    label Descrição
+    = form.text_field :description, class: "form-control"
+  .form-group
+    label Cliente
+    = form.select :customer_id, Customer.all.collect { |c| [ c.name, c.id ] }, { include_blank: true }, { class: "form-control" }
+  .form-group
+    label Analista responsável
+    = form.select :user_id, User.all.collect { |c| [ c.name, c.id ] }, { include_blank: true }, { class: "form-control" }
+  .form-group
+    label Prioridade
+    = form.select :priority_id, Priority.all.collect { |c| [ c.name, c.id ] }, { include_blank: true }, { class: "form-control" }
+  .form-group
+    = form.submit "Salvar Chamado", class: "btn btn-primary"

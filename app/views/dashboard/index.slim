@@ -1,0 +1,69 @@
+#page-wrapper
+  .row
+    .col-lg-12
+      h1.page-header Dashboard
+    /! /.col-lg-12
+  /! /.row
+  .row
+    .col-lg-4.col-md-6
+      .panel.panel-green
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-comments-o.fa-5x
+            .col-xs-9.text-right
+              .huge #{@dashboard_facade.opened_tickets_count}
+              div Chamados abertos
+            .clearfix
+    .col-lg-4.col-md-6
+      .panel.panel-yellow
+        .panel-heading
+          .row
+            .col-xs-3
+              i.fa.fa-comments-o.fa-5x
+            .col-xs-9.text-right
+              .huge #{@dashboard_facade.high_priority_tickets_count}
+              div Chamados prioritários
+            .clearfix
+    - if @dashboard_facade.high_priority_tickets_count
+      .col-lg-4.col-md-6
+        .panel.panel-red
+          .panel-heading
+            .row
+              .col-xs-3
+                i.fa.fa-comments-o.fa-5x
+              .col-xs-9.text-right
+                .huge #{@dashboard_facade.opened_urgent_priority_count}
+                div Chamados urgentes
+              .clearfix
+  /! /.row
+  .row
+    /! /.col-lg-8
+    .col-lg-12
+      div class="panel panel-default"
+        div class="panel-heading"
+          i class="fa fa-clock-o fa-fw"
+          | Chamados abertos
+        div class="panel-body"
+          .table-responsive
+            table class="table table-striped table-bordered"
+              thead
+                tr
+                  th Cliente
+                  th Prioridade
+                  th Responsável
+                  th Criado a
+                  th Açoes
+              tbody
+                - @dashboard_facade.opened_tickets.each do |ticket|
+                  tr
+                    td= ticket.customer.name
+                    td= ticket.priority.name
+                    td= ticket.user.name
+                    td= time_ago_in_words(ticket.created_at)
+                    td style="min-width: 40px"
+                      = link_to ticket, class: "btn btn-default" do
+                        i class="fa fa-folder-open-o"
+          br/
+        div class="panel-body"
+          = paginate @dashboard_facade.opened_tickets

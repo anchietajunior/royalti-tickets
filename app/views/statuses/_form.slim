@@ -1,0 +1,17 @@
+= form_with(model: status, local: true) do |form|
+  - if status.errors.any?
+    #error_explanation
+      h2
+        = pluralize(status.errors.count, "error")
+        | prohibited this status from being saved:
+      ul
+        - status.errors.full_messages.each do |message|
+          li= message
+  .form-group
+    label Nome
+    = form.text_field :name, class: "form-control"
+  .form-group
+    label Nível
+    = form.number_field :level, class: "form-control"
+  .form-group
+    = form.submit "Salvar status", class: "btn btn-primary"

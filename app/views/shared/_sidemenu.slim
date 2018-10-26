@@ -1,0 +1,22 @@
+.navbar-default.sidebar role="navigation"
+  .sidebar-nav.navbar-collapse
+    ul#side-menu.nav
+      li
+        = link_to '/dashboard' do
+          | Dashboard
+      li
+        = link_to tickets_path do
+          | Chamados
+      li
+        = link_to customers_path do
+          | Clientes
+      li
+        = link_to statuses_path do
+          | Status
+      li
+        = link_to priorities_path do
+          | Prioridades
+      li
+        = link_to analists_path do
+          | Usuários
+  /! /.sidebar-collapse

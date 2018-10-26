@@ -4,7 +4,7 @@ class PrioritiesController < ApplicationController
   # GET /priorities
   # GET /priorities.json
   def index
-    @priorities = Priority.all
+    @priorities = Priority.all.order(:level)
   end
 
   # GET /priorities/1
