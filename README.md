@@ -1,24 +1,25 @@
-# README
+# Royal TI tickets
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Versões de linguagem e framework
 
-Things you may want to cover:
+* Ruby 2.5.1
 
-* Ruby version
+* Rails 5.2.0
 
-* System dependencies
+## Instalação
 
-* Configuration
+* bundle install
 
-* Database creation
+* rails db:create
 
-* Database initialization
+* rails db:migrate
 
-* How to run the test suite
+* rails db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+* rails server
 
-* Deployment instructions
+## Criação de usuário
 
-* ...
+* rails c
+
+* User.create!(name: "Your Name", email: "yourmail@mail.com", password: "your password", password_confirmation: "your password")
