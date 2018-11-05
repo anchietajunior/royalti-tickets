@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'devise', '~> 4.5'
+gem 'rails-controller-testing'
 gem 'pundit'
 gem 'faker'
 gem 'jquery-rails'
@@ -25,10 +26,13 @@ gem 'kaminari'
 group :development, :test do
   gem 'rspec-rails', '3.8'
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'factory_bot_rails'
 end
 
 group :test do
   gem 'capybara', '~> 3.8'
+  gem 'database_cleaner'
+  gem 'shoulda-matchers'
 end
 
 group :development do

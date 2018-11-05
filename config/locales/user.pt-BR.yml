@@ -1,0 +1,19 @@
+pt-BR:
+  activerecord:
+    models:
+      user: User
+    attributes:
+      user:
+        email:                 Email
+        email_confirmation:    Confirmação do Email
+        secondary_email:       Email Secundário
+        password:              Senha
+        password_confirmation: Confirmação da Senha
+        name:                  Nome
+        created_at:            Criado em
+    errors:
+      messages:
+        record_invalid: 'A validação falhou: %{errors}'
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes

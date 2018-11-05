@@ -1,10 +1,17 @@
 require "rails_helper"
 
 RSpec.describe User, :type => :model do
-  context "creating new user" do
-    it "is not a valid user without valid attributes" do
-      user = User.new
-      expect(user.valid?).to eq(false)
-    end
+ 
+  let(:user) { FactoryBot.create(:user) }
+
+  context 'validations' do
+    it { is_expected.to validate_presence_of :name }
+    it { is_expected.to validate_presence_of :email }
+  end
+
+  context "relationship" do
+    it { is_expected.to have_many :admin_tickets }
+    it { is_expected.to have_many :owned_tickets }
+    it { is_expected.to have_many :comments }
   end
 end

@@ -29,10 +29,8 @@ class PrioritiesController < ApplicationController
     respond_to do |format|
       if @priority.save
         format.html { redirect_to @priority, notice: 'Priority was successfully created.' }
-        format.json { render :show, status: :created, location: @priority }
       else
         format.html { render :new }
-        format.json { render json: @priority.errors, status: :unprocessable_entity }
       end
     end
   end
