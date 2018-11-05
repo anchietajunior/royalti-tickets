@@ -23,3 +23,21 @@
 * rails c
 
 * User.create!(name: "Your Name", email: "yourmail@mail.com", password: "your password", password_confirmation: "your password")
+
+## Executando testes
+
+### Todos os testes
+
+* rspec
+
+### Testes de model
+
+* rspec spec/models
+
+### Testes de controller
+
+* rspec spec/controllers
+
+### Testes de facade
+
+* rspec spec/facades
